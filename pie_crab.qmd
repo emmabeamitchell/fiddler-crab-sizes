@@ -1,6 +1,10 @@
 ---
 title: "crab doc"
 format: html
+execute: 
+  warning: false
+  message: false
+  echo: false
 editor_options: 
   chunk_output_type: console
 ---
@@ -12,7 +16,24 @@ pie_crab <- pie_crab
 ```
 
 ```{r}
+
 ggplot(pie_crab, aes(x = latitude, y = size)) +
-  geom_point()
+  geom_point() +
+  labs(title = "crabs",
+       x = "latitudes",
+       y = "crab width")
+
+```
+
+
+```{r}
+
+summary_table <- pie_crab |>
+  group_by(size, site) |>
+  summarize(mean_crabs = mean(size), sd_crabs = sd(size, na.rm = TRUE), sample_crab = n())
+
+
+
+
 ```
 
