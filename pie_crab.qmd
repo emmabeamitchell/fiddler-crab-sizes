@@ -30,7 +30,8 @@ ggplot(pie_crab, aes(x = latitude, y = size)) +
 
 summary_table <- pie_crab |>
   group_by(size, site) |>
-  summarize(mean_crabs = mean(size), sd_crabs = sd(size, na.rm = TRUE), sample_crab = n())
+  summarize(mean_crabs = mean(size), sd_crabs = sd(size), sample_crab = n()) %>% 
+  rename("mean" = mean_crabs)
 
 
 
